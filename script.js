@@ -1,59 +1,46 @@
 document.addEventListener("DOMContentLoaded", () => {
-  let chosenFlower = null;
-  let chosenActivity = null;
+  let selectedFlower = null;
+  let selectedActivity = null;
 
-  // Flower click event handlers
-  document.getElementById("flower1").addEventListener("click", () => {
-    chosenFlower = "Pink Flower";
-    highlightFlower("flower1");
-  });
-
-  document.getElementById("flower2").addEventListener("click", () => {
-    chosenFlower = "Blue Flower";
-    highlightFlower("flower2");
-  });
-
-  document.getElementById("flower3").addEventListener("click", () => {
-    chosenFlower = "Purple Flower";
-    highlightFlower("flower3");
-  });
-
-  // Highlight the selected flower
-  function highlightFlower(id) {
-    document.querySelectorAll("#flowers svg").forEach((flower) => {
-      flower.style.stroke = "none";
+  // Flower selection event
+  document.querySelectorAll(".flower").forEach(flower => {
+    flower.addEventListener("click", () => {
+      selectedFlower = flower.dataset.flower;
+      resetFlowerSelection();
+      flower.style.border = "5px solid gold";
     });
-    document.getElementById(id).style.stroke = "gold";
-    document.getElementById(id).style.strokeWidth = "4px";
-  }
+  });
 
-  // Activity click event handlers
-  const activityButtons = document.querySelectorAll(".date-option");
-  activityButtons.forEach((button) => {
+  // Activity selection event
+  document.querySelectorAll(".activity-btn").forEach(button => {
     button.addEventListener("click", () => {
-      chosenActivity = button.dataset.option;
-      highlightActivity(button);
+      selectedActivity = button.textContent;
+      resetActivityButtons();
+      button.style.backgroundColor = "#2980b9"; // Highlight selected activity
     });
   });
 
-  // Highlight the selected activity
-  function highlightActivity(selectedButton) {
-    activityButtons.forEach((button) => {
-      button.classList.remove("selected");
-    });
-    selectedButton.classList.add("selected");
-  }
+  // Submit button event
+  document.getElementById("submit-btn").addEventListener("click", () => {
+    const resultText = document.getElementById("result-text");
 
-  // Submit button handler
-  document.getElementById("submit").addEventListener("click", () => {
-    const result = document.getElementById("result");
-
-    if (!chosenFlower) {
-      result.textContent = "Please select a flower.";
-    } else if (!chosenActivity) {
-      result.textContent = "Please choose an activity for your date.";
+    if (selectedFlower && selectedActivity) {
+      resultText.textContent = `You chose the ${selectedFlower} for a ${selectedActivity} date!`;
     } else {
-      result.textContent = `You chose the ${chosenFlower} and selected "${chosenActivity}" for your date!`;
+      resultText.textContent = "Please select both a flower and an activity.";
     }
   });
+
+  // Helper functions
+  function resetFlowerSelection() {
+    document.querySelectorAll(".flower").forEach(flower => {
+      flower.style.border = "none";
+    });
+  }
+
+  function resetActivityButtons() {
+    document.querySelectorAll(".activity-btn").forEach(button => {
+      button.style.backgroundColor = "#3498db"; // Reset background color
+    });
+  }
 });

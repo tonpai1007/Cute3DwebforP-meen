@@ -1,0 +1,23 @@
+#date-options {
+  display: flex;
+  gap: 15px;
+  margin: 10px 0;
+}
+
+.date-option {
+  padding: 10px 20px;
+  background-color: #ffd700;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.date-option:hover {
+  background-color: #ffc107;
+}
+
+.date-option.selected {
+  background-color: #ffa500;
+  color: white;
+}

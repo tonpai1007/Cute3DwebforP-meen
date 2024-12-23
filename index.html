@@ -1,11 +1,47 @@
-<div id="date-picker">
-  <p>Choose an Activity for Your Date:</p>
-  <div id="date-options">
-    <button class="date-option" data-option="Picnic">Picnic</button>
-    <button class="date-option" data-option="Movie">Movie</button>
-    <button class="date-option" data-option="Dinner">Dinner</button>
-  </div>
-  <button id="submit">Submit</button>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Date Planner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Interactive Date Planner</h1>
+    <p>Choose a flower and select an activity for your date!</p>
+  </header>
 
-<div id="result"></div>
+  <div id="main-content">
+    <div id="character-container">
+      <svg id="character" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 150">
+        <circle cx="50" cy="40" r="30" fill="#ffcccb" />
+        <rect x="35" y="70" width="30" height="60" fill="black" />
+      </svg>
+    </div>
+
+    <div id="flower-selection">
+      <h2>Pick a Flower:</h2>
+      <div class="flower" id="flower1" data-flower="Pink Flower"></div>
+      <div class="flower" id="flower2" data-flower="Blue Flower"></div>
+      <div class="flower" id="flower3" data-flower="Purple Flower"></div>
+    </div>
+
+    <div id="activity-selection">
+      <h2>Pick an Activity:</h2>
+      <button class="activity-btn" id="picnic">Picnic</button>
+      <button class="activity-btn" id="movie">Movie</button>
+      <button class="activity-btn" id="dinner">Dinner</button>
+    </div>
+
+    <button id="submit-btn">Submit</button>
+
+    <div id="result">
+      <h3>Your Date Choice:</h3>
+      <p id="result-text">Select a flower and an activity to see your choice!</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
